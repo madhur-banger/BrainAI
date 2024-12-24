@@ -1,0 +1,18 @@
+server {
+    listen 80;
+    server_name brain.cloudevopsnow.com 54.91.176.254;
+
+    location / {
+        proxy_pass http://127.0.0.1:5001;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
+    location /static {
+        alias /var/www/brainai/static;
+    }
+
+    location /uploads {
+        alias /var/www/brainai/uploads;
+    }
+}
